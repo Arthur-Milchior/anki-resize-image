@@ -91,17 +91,13 @@ def setupWeb(self):
 Editor.setupWeb = setupWeb
 
 
-def loadNote(self, focusTo=None):
-    """Todo
-
-    focusTo -- Whether focus should be set to some field."""
+def loadNote(self, focusTo=None) -> None:
     if not self.note:
         return
 
-    # field name, field content modified so that it's image's url can be used locally.
-    data = []
-    for fld, val in list(self.note.items()):
-        data.append((fld, self.mw.col.media.escapeImages(val)))
+    data = [
+        (fld, self.mw.col.media.escapeImages(val)) for fld, val in self.note.items()
+    ]
     self.widget.show()
     self.updateTags()
 
@@ -112,14 +108,16 @@ def loadNote(self, focusTo=None):
         self.checkValid()
         if focusTo is not None:
             self.web.setFocus()
-        runHook("loadNote", self)
+        gui_hooks.editor_did_load_note(self)
 
-    # only change is setFields_
-    self.web.evalWithCallback("setFields_(%s); setFonts(%s); focusField(%s); setNoteId(%s)" % (
+    # setFields_ is only diff
+    js = "setFields_(%s); setFonts(%s); focusField(%s); setNoteId(%s)" % (
         json.dumps(data),
-        json.dumps(self.fonts()), json.dumps(focusTo),
-        json.dumps(self.note.id)),
-        oncallback)
+        json.dumps(self.fonts()),
+        json.dumps(focusTo),
+        json.dumps(self.note.id),
+    )
+    self.web.evalWithCallback(js, oncallback)
 
 
 Editor.loadNote = loadNote

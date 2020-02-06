@@ -49,22 +49,9 @@ function resizeImagesInField(idx, field){
     return $resizeImagesInField($(field));
 }
 
-function setFormat_(cmd, arg, nosave) {
-    /* Execute command cmd with argument arg on the currently selected text. nosave determines whether the text must be saved after that.
-       
-       cmd is a command which change the text of a field*/
-    setFormat(cmd, arg, nosave);
-    setTimeout(
-        function(){
-            resizeImagesInField(null, currentField)
-        },
-        2000);
-}
-
 setTimeout(    
-    function(){
+    function() {
         saveField = function(type) {
-            //alert(0);
             /* Send to python an information about what just occured, on which
              * field, which note (id) and with what value in the field.
              
@@ -80,7 +67,23 @@ setTimeout(
             var $copyField = $(currentField).clone()
             $cleanResize($copyField);
             pycmd(type + ":" + currentFieldOrdinal() + ":" + currentNoteId + ":" + $copyField.html());
-        }
+        };
+
+        /// If the field has only an empty br, remove it first.
+        insertHtmlRemovingInitialBR = function(html) {
+            if (html !== "") {
+                // remove <br> in empty field
+                if (currentField && currentField.innerHTML === "<br>") {
+                    currentField.innerHTML = "";
+                }
+                setFormat("inserthtml", html);
+                setTimeout(
+                    function(){
+                        resizeImagesInField(null, currentField)
+                    },
+                    2000);
+            }
+        };
     },
     1000
 );
