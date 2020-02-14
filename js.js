@@ -8,6 +8,7 @@ function $cleanResize($field){
     imgs = $field.find("img.ui-resizable");
     imgs.removeClass();
     imgs.css("position", "");
+    imgs.css("max-width", "");
 }
 
 function cleanResize(field){
@@ -18,6 +19,7 @@ function cleanResize(field){
 function $resizeImage($img){
     if ($img.resizable("instance") == undefined ) {
         $img.resizable();
+        $img.css("max-width", "100%");
     } else {
         console.log("Trying to apply resizable to image already resizable.");
     }
