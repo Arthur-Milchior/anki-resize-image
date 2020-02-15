@@ -4,6 +4,8 @@ from anki.lang import _
 from aqt.editor import *
 from aqt.editor import _html
 
+from .config import getUserOption
+
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 css_file = os.path.join(__location__, "jquery-ui.css")
@@ -39,14 +41,14 @@ def setupWeb(self):
     # The color selection buttons do not use an icon so the HTML must be specified manually
     tip = _("Set foreground colour (F7)")
     righttopbtns.append('''<button tabindex=-1 class=linkb title="{}"
-            type="button" onclick="pycmd('colour');return false;">
-            <div id=forecolor style="display:inline-block; background: #000;border-radius: 5px;"
-            class=topbut></div></button>'''.format(tip))
+        type="button" onclick="pycmd('colour');return false;">
+        <div id=forecolor style="display:inline-block; background: #000;border-radius: 5px;"
+        class=topbut></div></button>'''.format(tip))
     tip = _("Change colour (F8)")
     righttopbtns.append('''<button tabindex=-1 class=linkb title="{}"
-            type="button" onclick="pycmd('changeCol');return false;">
-            <div style="display:inline-block; border-radius: 5px;"
-            class="topbut rainbow"></div></button>'''.format(tip))
+        type="button" onclick="pycmd('changeCol');return false;">
+        <div style="display:inline-block; border-radius: 5px;"
+        class="topbut rainbow"></div></button>'''.format(tip))
     righttopbtns.append(self._addButton(
         'text_cloze', 'cloze', _("Cloze deletion (Ctrl+Shift+C)")))
     righttopbtns.append(self._addButton(
@@ -58,19 +60,19 @@ def setupWeb(self):
 
     # Fields... and Cards... button on top lefts, and
     lefttopbtns = """
-                <button title='%(fldsTitle)s' onclick="pycmd('fields')">%(flds)s...</button>
-                <button title='%(cardsTitle)s' onclick="pycmd('cards')">%(cards)s...</button>
-        """ % dict(flds=_("Fields"), cards=_("Cards"),
-                   fldsTitle=_("Customize Fields"),
-                   cardsTitle=shortcut(_("Customize Card Templates (Ctrl+L)")))
+            <button title='%(fldsTitle)s' onclick="pycmd('fields')">%(flds)s...</button>
+            <button title='%(cardsTitle)s' onclick="pycmd('cards')">%(cards)s...</button>
+    """ % dict(flds=_("Fields"), cards=_("Cards"),
+               fldsTitle=_("Customize Fields"),
+               cardsTitle=shortcut(_("Customize Card Templates (Ctrl+L)")))
     topbuts = """
-            <div id="topbutsleft" style="float:left;">
-                %(lefttopbtns)s
-            </div>
-            <div id="topbutsright" style="float:right;">
-                %(rightbts)s
-            </div>
-        """ % dict(lefttopbtns=lefttopbtns, rightbts="".join(righttopbtns))
+        <div id="topbutsleft" style="float:left;">
+            %(lefttopbtns)s
+        </div>
+        <div id="topbutsright" style="float:right;">
+            %(rightbts)s
+        </div>
+    """ % dict(lefttopbtns=lefttopbtns, rightbts="".join(righttopbtns))
     bgcol = self.mw.app.palette().window().color().name()
     # then load page
     html = _html % (
