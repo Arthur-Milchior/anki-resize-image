@@ -20,6 +20,9 @@ function $resizeImage($img){
     if ($img.resizable("instance") == undefined ) {
         $img.resizable();
         $img.css("max-width", "100%");
+        $divUi = $img.parents("div[class^=ui-]");
+        $divUi.attr("contentEditable", "false");
+        $divUi.css("display", "inline-block");
     } else {
         console.log("Trying to apply resizable to image already resizable.");
     }
@@ -42,9 +45,6 @@ function $resizeImagesInField($field){
     $imgs.dblclick(dblClickImage);
     $imgs.each(resizeImage);
     $imgs.css("display", "");
-    $divUi = $field.find("div[class^=ui-]");
-    $divUi.attr("contentEditable", "false");
-    $divUi.css("display", "inline-block");
 }
 
 function resizeImagesInField(idx, field){
