@@ -33,8 +33,16 @@ function $resizeImage($img){
 
 function onClick(){
     $img = $(this);
-    $normalImageSize($img);
-    $resizeImage($img);
+    console.log("resizable: " + $img.data("resizable"))
+    if ($img.data("resizable") != true){
+        $img.data("resizable", true);
+        $normalImageSize($img);
+        $resizeImage($img);
+    } else {
+        $img.data("resizable", false);
+        $img.css("max-height", "");
+        $img.resizable( "destroy" );
+    }
 }
 
 function $normalImageSize($img){
