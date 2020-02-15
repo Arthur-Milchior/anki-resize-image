@@ -1,4 +1,5 @@
 {
   "package":"resize",
-  "name": "Resize images in editor"
+  "name": "Resize images in editor",
+  "conflicts": ["229181581", "2064123047", "3491767031", "516643804", "882784122"]
 }
