@@ -1,0 +1,2 @@
+apply maximum height when not resizing: true or false. Whether to limit the size of image in the editor. You must then click on the image to be able to resize it.
+max-height: which limit to apply to image (only if previous value is set to true)
