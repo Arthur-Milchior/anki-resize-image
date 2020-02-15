@@ -1,3 +1,5 @@
+limitSize = false
+
 function $cleanResize($field){
     $divUi = $field.find("div[class^=ui-]");
     $divUi.replaceWith(
@@ -9,6 +11,7 @@ function $cleanResize($field){
     imgs.removeClass();
     imgs.css("position", "");
     imgs.css("max-width", "");
+    imgs.css("max-height", "");
 }
 
 function cleanResize(field){
@@ -28,6 +31,20 @@ function $resizeImage($img){
     }
 }
 
+function onClick(){
+    $img = $(this);
+    $normalImageSize($img);
+    $resizeImage($img);
+}
+
+function $normalImageSize($img){
+    $img.css("max-height", "100%");
+}
+
+function onResize(event, ui){
+    $img = ui.element.find("img");
+    $normalImageSize($img)
+}
 
 function resizeImage(idx, img){
     $resizeImage($(img));
@@ -45,6 +62,7 @@ function $resizeImagesInField($field){
     $imgs.dblclick(dblClickImage);
     $imgs.each(resizeImage);
     $imgs.css("display", "");
+    $imgs.css("max-width", "100%");
 }
 
 function resizeImagesInField(idx, field){
@@ -95,6 +113,10 @@ setTimeout(
 function setFields_(fields) {
     setFields(fields);
     $fields = $("#fields");
-    setTimeout(function(){$fields.find(".field").each(resizeImagesInField);}, 1000);
+    if (limitSize) {
+        $fields.find(".field").find("img").click(onClick);
+    } else {
+        setTimeout(function(){$fields.find(".field").each(resizeImagesInField);}, 1000);
+    }
 }
 

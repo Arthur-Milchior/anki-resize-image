@@ -18,6 +18,8 @@ css = f"""<style>{css}</style>"""
 
 
 def setupWeb(self):
+    self.limitHeight = getUserOption(
+        "apply maximum height when not resizing", False)
     self.web = EditorWebView(self.widget, self)
     self.web.title = "editor"
     self.web.allowDrops = True
@@ -83,11 +85,17 @@ def setupWeb(self):
         js = f.read()
     js = f"""<script>{js}</script>"""
 
+    if self.limitHeight:
+        code_limit = f"""<style type="text/css">
+        #fields img{{ max-height: {getUserOption("max-height", "200px")};}}</style><script>
+        limitSize = true;</script>"""
+    else:
+        code_limit = ""
     self.web.stdHtml(html,
                      css=["editor.css"],
                      # only difference, css and js file and -ui
                      js=["jquery.js", "jquery-ui.js", "editor.js"],
-                     head=js+css)
+                     head=js+css+code_limit)
 
 
 Editor.setupWeb = setupWeb
