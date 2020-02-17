@@ -109,7 +109,7 @@ insertHtmlRemovingInitialBR = function(html) {
             function(){
                 resizeImagesInField(null, currentField) 
             },
-            2000); 
+            2000);
     }
 };
 
@@ -121,6 +121,6 @@ setFields = function(fields) {
     if (limitSize) {
         $fields.find(".field").find("img").click(onClick);
     } else {
-        setTimeout(function(){$fields.find(".field").each(resizeImagesInField);}, 1000);
+        $fields.ready(function(){$fields.find(".field").each(resizeImagesInField);});
     }
 };
