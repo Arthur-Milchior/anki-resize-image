@@ -1,17 +1,23 @@
-limitSize = false
+function partialCleanResize(idx, img){
+    $partialCleanResize($(img));
+}
+
+function $partialCleanResize($img){
+    // Clean the style in the image. So that max height can be applied again correctly.
+    $img.removeClass();
+    ["position", "max-width", "max-height", "margin", "resize", "position", "zoom", "display", "top", "left"].forEach(style => {$img.css(style, "");});
+}
 
 function $cleanResize($field){
+    // clean everything related to resize, so that it can be saved and
+    // displayed properly in reviewer
     $divUi = $field.find("div[class^=ui-]");
     $divUi.replaceWith(
         function() {
             return $(this).contents();
         }
     );
-    imgs = $field.find("img.ui-resizable");
-    imgs.removeClass();
-    imgs.css("position", "");
-    imgs.css("max-width", "");
-    imgs.css("max-height", "");
+    $field.find("img").each(partialCleanResize);
 }
 
 function cleanResize(field){
@@ -33,15 +39,14 @@ function $resizeImage($img){
 
 function onClick(){
     $img = $(this);
-    console.log("resizable: " + $img.data("resizable"))
     if ($img.data("resizable") != true){
         $img.data("resizable", true);
         $normalImageSize($img);
         $resizeImage($img);
     } else {
         $img.data("resizable", false);
-        $img.css("max-height", "");
         $img.resizable( "destroy" );
+        $partialCleanResize($img);
     }
 }
 
@@ -77,54 +82,45 @@ function resizeImagesInField(idx, field){
     return $resizeImagesInField($(field));
 }
 
-setTimeout(    
-    function() {
-        saveField = function(type) {
-            /* Send to python an information about what just occured, on which
-             * field, which note (id) and with what value in the field.
-             
-             Event may be "blur" when focus is lost. Or "key" otherwise*/
-            clearChangeTimer();
-            
-            if (!currentField) {
-                // no field has been focused yet
-                return;
-            }
-            // type is either 'blur' or 'key'
-            pycmd(type + ":" + currentFieldOrdinal() + ":" + currentNoteId + ":" + currentField.innerHTML);
-            var $copyField = $(currentField).clone()
-            $cleanResize($copyField);
-            pycmd(type + ":" + currentFieldOrdinal() + ":" + currentNoteId + ":" + $copyField.html());
-        };
+function saveField(type) {
+    /* Send to python an information about what just occured, on which
+     * field, which note (id) and with what value in the field.
+     Event may be "blur" when focus is lost. Or "key" otherwise*/
+    clearChangeTimer();
+    if (!currentField) {
+        // no field has been focused yet
+        return;
+    }
+    // type is either 'blur' or 'key'
+    var $copyField = $(currentField).clone()
+    $cleanResize($copyField);
+    pycmd(type + ":" + currentFieldOrdinal() + ":" + currentNoteId + ":" + $copyField.html());
+};
 
-        /// If the field has only an empty br, remove it first.
-        insertHtmlRemovingInitialBR = function(html) {
-            if (html !== "") {
-                // remove <br> in empty field
-                if (currentField && currentField.innerHTML === "<br>") {
-                    currentField.innerHTML = "";
-                }
-                setFormat("inserthtml", html);
-                setTimeout(
-                    function(){
-                        resizeImagesInField(null, currentField)
-                    },
-                    2000);
-            }
-        };
-    },
-    1000
-);
-// really want to redefine this function. Waiting 1 second should let
-// $ be loaded. No saving should occur on first second hopefully.
-    
-function setFields_(fields) {
-    setFields(fields);
+/// If the field has only an empty br, remove it first.
+insertHtmlRemovingInitialBR = function(html) {
+    if (html !== "") {
+        // remove <br> in empty field
+        if (currentField && currentField.innerHTML === "<br>") {
+            currentField.innerHTML = "";
+        }
+        setFormat("inserthtml", html);
+        setTimeout(
+            function(){
+                resizeImagesInField(null, currentField) 
+            },
+            2000); 
+    }
+};
+
+setFieldsInit = setFields;    
+setFields = function(fields) {
+    setFieldsInit(fields);
     $fields = $("#fields");
+    //console.log("$fields is "+ $fields[0].outerHTML);
     if (limitSize) {
         $fields.find(".field").find("img").click(onClick);
     } else {
         setTimeout(function(){$fields.find(".field").each(resizeImagesInField);}, 1000);
     }
-}
-
+};
