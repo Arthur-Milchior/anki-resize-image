@@ -37,8 +37,37 @@ function $resizeImage($img){
     }
 }
 
-function onClick(){
-    $img = $(this);
+//code originally from https://codepen.io/chriscoyier/pen/HfBtz
+
+var timer = 0;
+var delay = 200;
+var waiting = false;
+function onClick(img) {
+    timer = setTimeout(function() {
+        _onClick(img);
+        waiting = false;
+    }, delay);
+}
+
+function dblClickImage(img){
+    clearTimeout(timer);
+    waiting = false;
+    _dblClickImage(img);
+}
+//end of code from https://codepen.io/chriscoyier/pen/HfBtz
+function onClickOrDoubleClick() {
+    img = this;
+    if (waiting){
+        dblClickImage(img);
+    }
+    else {
+        onClick(img);
+        waiting = true;
+    }
+}
+
+function _onClick(img){
+    $img = $(img);
     if ($img.data("resizable") != true){
         $img.data("resizable", true);
         $normalImageSize($img);
@@ -49,6 +78,7 @@ function onClick(){
         $partialCleanResize($img);
     }
 }
+
 
 function $normalImageSize($img){
     $img.css("max-height", "100%");
@@ -62,17 +92,20 @@ function onResize(event, ui){
 function resizeImage(idx, img){
     $resizeImage($(img));
 }
-function dblClickImage(){
-    $img = $(this);
+function _dblClickImage(img){
+    $img = $(img);
     $img.css("width", "");
     $img.css("height", "");
     $parents = $img.parents("div[class^=ui-]");
     $parents.css("width", "");
     $parents.css("height", "");
 }
+function _dblClickImageUnconditional(){
+    _dblClickImage(this);
+}
 function $resizeImagesInField($field){
     $imgs = $field.find("img");
-    $imgs.dblclick(dblClickImage);
+    $imgs.dblclick(_dblClickImageUnconditional);
     $imgs.each(resizeImage);
     $imgs.css("display", "");
     $imgs.css("max-width", "100%");
@@ -117,9 +150,8 @@ setFieldsInit = setFields;
 setFields = function(fields) {
     setFieldsInit(fields);
     $fields = $("#fields");
-    //console.log("$fields is "+ $fields[0].outerHTML);
     if (limitSize) {
-        $fields.find(".field").find("img").click(onClick);
+        $fields.find(".field").find("img").click(onClickOrDoubleClick);
     } else {
         $fields.ready(function(){$fields.find(".field").each(resizeImagesInField);});
     }
