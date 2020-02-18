@@ -27,7 +27,9 @@ function cleanResize(field){
 
 function $resizeImage($img){
     if ($img.resizable("instance") == undefined ) {
-        $img.resizable();
+        $img.resizable({
+            aspectRatio: preserve_ratio
+        });
         $img.css("max-width", "100%");
         $divUi = $img.parents("div[class^=ui-]");
         $divUi.attr("contentEditable", "false");
