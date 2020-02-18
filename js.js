@@ -82,6 +82,7 @@ function _onClick(img){
 
 function $normalImageSize($img){
     $img.css("max-height", "100%");
+    $img.css("max-width", "100%");
 }
 
 function onResize(event, ui){
@@ -150,8 +151,9 @@ setFieldsInit = setFields;
 setFields = function(fields) {
     setFieldsInit(fields);
     $fields = $("#fields");
-    if (limitSize) {
-        $fields.find(".field").find("img").click(onClickOrDoubleClick);
+    if (limit_height || limit_width) {
+        $imgs = $fields.find(".field").find("img");
+        $imgs.click(onClickOrDoubleClick);
     } else {
         $fields.ready(function(){$fields.find(".field").each(resizeImagesInField);});
     }

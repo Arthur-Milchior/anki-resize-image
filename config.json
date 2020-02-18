@@ -1,4 +1,6 @@
 {
   "max-height": "200px",
-  "apply maximum height when not resizing": false
+  "apply maximum height when not resizing": false,
+  "max-width": "200px",
+  "apply maximum width when not resizing": false
 }
