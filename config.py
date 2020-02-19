@@ -22,6 +22,10 @@ otherwise = ""
 userOption = None
 
 
+
+def writeConfig():
+    mw.addonManager.writeConfig(__name__, userOption)
+
 def _getUserOption():
     global userOption
     if userOption is None:
@@ -29,12 +33,22 @@ def _getUserOption():
 
 
 def getUserOption(key=None, default=None):
+    """Get the user option if it is set. Otherwise return the default
+    value and add it to the config.
+
+    When an add-on was updated, new config key were not added. This
+    was a problem because user never discover those configs. By adding
+    it to the config file, users will see the option and can configure it.
+
+    """
     _getUserOption()
     if key is None:
         return userOption
     if key in userOption:
         return userOption[key]
     else:
+        userOption[key] = default
+        writeConfig()
         return default
 
 
@@ -47,10 +61,6 @@ if lastVersion > version:
     if otherwise:
         t += "\n" + otherwise
     showWarning(t)
-
-
-def writeConfig():
-    mw.addonManager.writeConfig(__name__, userOption)
 
 
 def update(_):
