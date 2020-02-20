@@ -7,5 +7,5 @@
   "apply minimum height when not resizing": true,
   "min-width": "200px",
   "apply minimum width when not resizing": true,
-  "preserve ratio while resizing": true
+  "preserve ratio while resizing": "current"
 }

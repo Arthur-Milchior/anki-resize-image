@@ -24,15 +24,38 @@ should now in advance which size you want.
 The add-on have been tested and seems to work with every users now. I should however note that if you yourself are used to manipulate the html of your fields, unexpected results may occur. For example if for some reason you did add classes, max-height, max-width... to some of your images.
 
 ## Configuration
-There are two main configurations:
 ### Ratio
-By default, resizing preserve ratio. I assume that's the usual way to resize image and that it is what user want. If you want to be able to resize without preserving ration, you need to switch "preserve ratio while resizing" to false. You can always resize and preserve ration by pressing shift while resizing.
+By default, resizing preserve ratio. I assume that's the usual way to
+resize image and that it is what user want. If you want to be able to
+resize without preserving ratio, you need to switch "preserve ratio
+while resizing" to false. You can always resize and preserve ratio by
+pressing shift while resizing. 
+
+You can also set this value to "original". In this case, the image
+will always have the original ratio. The main advantage being that
+this ratio will be preserved even if you add maximum height or width.
 
 ### Maximum height or width
-You can tell the add-on to limit the height and/or width in the editor. This way, big images does not actually takes a lot of place. If you do so, you'll need to click on images before being able to resize them. You'll then need to click again if you want the maximums to be applied.
+You can tell the add-on to limit the height and/or width in the
+editor. This way, big images does not actually takes a lot of
+place. If you do so, you'll need to click on images before being able
+to resize them. You'll then need to click again if you want the
+maximums to be applied.
+
+Note that the ratio won't be preserved, unless you did set "preserve
+ratio while resizing" to "original".
+
+### Minimal height and width
+By default, an image will never be less than 10 px in height and
+width. This ensure that you can always resize the image. Otherwise,
+you could reduce height/width by accident to 0 px and then have the
+image disappear. You could change this value if you need to have
+smaller images; but I believe it'll be rare.
+
 
 ## Internal
-This add-on replace the method `Editor.setupWeb`. The new method calls the previous method. 
+This add-on replace the method `Editor.setupWeb`. The new method calls
+the previous method.
 
 ## TODO
 ### Resizing in reviewer

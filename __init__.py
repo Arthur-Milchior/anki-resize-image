@@ -22,5 +22,5 @@ def setBrowserResizeImage(self):
                 limit = getUserOption(f"{m}-{direction}", default)
                 add_style_in_web(self, f"""#fields img {{{m}-{direction}: {limit} }}""")
                 self.web.eval(f"""{m}_{direction} = "{limit}";""")
-    self.web.eval(f"""preserve_ratio={json.dumps(getUserOption("preserve ratio while resizing", True))}""")
+    self.web.eval(f"""preserve_ratio={json.dumps(getUserOption("preserve ratio while resizing", "current"))}""")
 Editor.setupWeb = wrap(Editor.setupWeb, setBrowserResizeImage)

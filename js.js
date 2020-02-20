@@ -11,6 +11,7 @@ function $partialCleanResize($img){
     // Clean the style in the image. So that max height can be applied again correctly.
     $img.removeClass();
     ["position", "max-width", "max-height", "margin", "resize", "position", "zoom", "display", "top", "left"].forEach(style => {$img.css(style, "");});
+    $maybe_remove_a_dimension($img);
 }
 
 function $cleanResize($field){
@@ -29,11 +30,25 @@ function cleanResize(field){
     $cleanResize($(field));
 }
 
+function $maybe_remove_a_dimension($img){
+    if (preserve_ratio == "original"){
+        if (max_width != null) {
+            $img.css("height", "");
+        } else {
+            $img.css("width", "");
+        }
+    }
+}
 
 function $resizeImage($img){
+    var preserve_ratio_in_resizable = false;
+    if (preserve_ratio == "current" || preserve_ratio == "original"){
+        preserve_ratio_in_resizable = true;
+    }
     if ($img.resizable("instance") == undefined ) {
+        $maybe_remove_a_dimension($img);
         $img.resizable({
-            aspectRatio: preserve_ratio
+            aspectRatio: preserve_ratio_in_resizable
         });
         $img.css("max-width", "100%");
         $divUi = $img.parents("div[class^=ui-]");
