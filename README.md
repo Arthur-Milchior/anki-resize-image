@@ -68,7 +68,9 @@ I can not yet add the list of supporter on kickstarter. Because kickstarter does
 Currently, when max-heigh/width is applied to an image which have been resized, the new size is not proportional to the old one. I don't see any easy way to correct it. May be try to figure it one day.
 
 ### Frozen fields
-While this add-on is mostly compatible with frozen fields, once you freeze/unfreeze a field, images are not resizable anymore. I did submit a [pull request](https://github.com/glutanimate/frozen-fields/pull/15) to the "Frozen field" add-on, in order to correct this and clean its code. I can not do anything while waiting for this pull request to be accepted.
+While this add-on is mostly compatible with frozen fields, once you
+freeze/unfreeze a field, images are not resizable anymore. I submitted
+a correction to Frozen Field add-on. You can beta test it (https://github.com/glutanimate/frozen-fields/releases/tag/v2.1.0)[here]. Please tell us (here)[https://github.com/glutanimate/frozen-fields/pull/15#event-3054473127] whether it did work correctly; in which case the add-on will be updated on ankiweb.
 
 ### Hook
 Once 2.1.21 is publicly available (not in beta) I should use new's hook to add the javascript to the editor with the hook instead of changing the method setupWeb.
