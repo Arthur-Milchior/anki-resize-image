@@ -12,17 +12,17 @@ from .from_file import add_style_in_web, str_from_file_name
 def setBrowserResizeImage(self):
     js = ["js", "jquery-ui"]
     css = ["jquery-ui"]
-    self.web.eval("var limit_height = null;")
-    self.web.eval("var limit_width = null;")
+    self.web.eval("var max_height = null;")
+    self.web.eval("var max_width = null;")
     if getUserOption("apply maximum height when not resizing", False):
         max_height = getUserOption("max-height", "200px")
         add_style_in_web(
             self, f"""#fields img {{max-height: {max_height} }}""")
-        self.web.eval(f"""limit_height = "{max_height}";""")
+        self.web.eval(f"""max_height = "{max_height}";""")
     if getUserOption("apply maximum width when not resizing", False):
         max_width = getUserOption("max-width", "200px")
         add_style_in_web(self, f"""#fields img {{max-width: {max_width} }}""")
-        self.web.eval(f"""limit_width = "{max_width}";""")
+        self.web.eval(f"""max_width = "{max_width}";""")
     self.web.eval(
         f"""preserve_ratio={json.dumps(getUserOption("preserve ratio while resizing", True))}""")
     css = "\n".join(str_from_file_name(f"{file}.css") for file in css)

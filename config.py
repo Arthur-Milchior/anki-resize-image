@@ -22,9 +22,9 @@ otherwise = ""
 userOption = None
 
 
-
 def writeConfig():
     mw.addonManager.writeConfig(__name__, userOption)
+
 
 def _getUserOption():
     global userOption

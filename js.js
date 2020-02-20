@@ -153,7 +153,7 @@ setFieldsInit = setFields;
 setFields = function(fields) {
     setFieldsInit(fields);
     $fields = $("#fields");
-    if (limit_height || limit_width) {
+    if (max_height || max_width) {
         $imgs = $fields.find(".field").find("img");
         $imgs.click(onClickOrDoubleClick);
     } else {
