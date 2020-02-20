@@ -76,7 +76,9 @@ a correction to Frozen Field add-on. You can beta test it (https://github.com/gl
 Once 2.1.21 is publicly available (not in beta) I should use new's hook to add the javascript to the editor with the hook instead of changing the method setupWeb.
 
 ### Contribution
-List of (contributor)[contributors.md]
+This add-on has been crowdfunden on (Kickstarter)[https://www.kickstarter.com/projects/arthurmilchior/image-resizing-in-anki]. Thanks to:
+* The AnKing
+* and other (contributors)[contributors.md] 
 
 ## Links, licence and credits
 
