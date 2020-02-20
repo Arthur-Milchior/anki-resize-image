@@ -50,6 +50,9 @@ While this add-on is mostly compatible with frozen fields, once you freeze/unfre
 ### Hook
 Once 2.1.21 is publicly available (not in beta) I should use new's hook to add the javascript to the editor with the hook instead of changing the method setupWeb.
 
+### Contribution
+List of (contributor)[contributors.md]
+
 ## Links, licence and credits
 
 Key         |Value
