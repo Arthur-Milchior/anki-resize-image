@@ -15,12 +15,15 @@ def setBrowserResizeImage(self):
     js = "\n".join(str_from_file_name(f"{file}.js") for file in js)
     add_style_in_web(self, css)
     self.web.eval(js)
-    for m, default in [("min", "10px"), ("max", "200px")]:
+    for m, default in [
+            ("min", "10px"),
+            ("max", "200px")
+    ]:
         for direction in ["width", "height"]:
             if getUserOption(f"apply {m}imum {direction} when not resizing", False):
                 limit = getUserOption(f"{m}-{direction}", default)
                 add_style_in_web(
-                    self, f"""#fields img {{{m}-{direction}: {limit} }}""")
+                    self, f""".field img {{{m}-{direction}: {limit} }}""")
                 self.web.eval(f"""{m}_{direction} = "{limit}";""")
     self.web.eval(
         f"""preserve_ratio={json.dumps(getUserOption("preserve ratio while resizing", "current"))}""")
