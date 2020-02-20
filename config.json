@@ -3,5 +3,9 @@
   "apply maximum height when not resizing": false,
   "max-width": "200px",
   "apply maximum width when not resizing": false,
+  "min-height": "200px",
+  "apply minimum height when not resizing": false,
+  "min-width": "200px",
+  "apply minimum width when not resizing": false,
   "preserve ratio while resizing": true
 }
