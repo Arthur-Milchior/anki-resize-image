@@ -87,6 +87,7 @@ Key         |Value
 Copyright   | Arthur Milchior <arthur@milchior.fr>
 Based on    | Anki code by Damien Elmes <anki@ichi2.net>
             | [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) by Simone Gaiarin
+            | jquery-ui (under MIT license)
 License     | GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
 Source in   | https://github.com/Arthur-Milchior/anki-
 Addon number| [1103084694](https://ankiweb.net/shared/info/1103084694)
