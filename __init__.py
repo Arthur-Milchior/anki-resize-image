@@ -30,3 +30,4 @@ def setBrowserResizeImage(self):
 
 
 Editor.setupWeb = wrap(Editor.setupWeb, setBrowserResizeImage)
+# use webview_will_set_content when .21 goes out
