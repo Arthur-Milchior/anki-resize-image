@@ -7,5 +7,6 @@
   "apply minimum height when not resizing": true,
   "min-width": "10px",
   "apply minimum width when not resizing": true,
-  "preserve ratio while resizing": "current"
+  "preserve ratio while resizing": "current",
+  "resizable-style": "border:1px dashed black;"
 }

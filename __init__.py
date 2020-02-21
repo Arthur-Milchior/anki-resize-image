@@ -15,6 +15,9 @@ def setBrowserResizeImage(self):
     js = "\n".join(str_from_file_name(f"{file}.js") for file in js)
     add_style_in_web(self, css)
     self.web.eval(js)
+    style = getUserOption("resizable-style", "border:1px dashed black;")
+    if style:
+        add_style_in_web(self, f".ui-wrapper {{   {style} }}")
     for m, default in [
             ("min", "10px"),
             ("max", "200px")
