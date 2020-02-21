@@ -78,6 +78,7 @@ Once 2.1.21 is publicly available (not in beta) I should use new's hook to add t
 ### Contribution
 This add-on has been crowdfunden on (Kickstarter)[https://www.kickstarter.com/projects/arthurmilchior/image-resizing-in-anki]. Thanks to:
 * The AnKing
+* Pravin Manju Vence
 * and other (contributors)[contributors.md] 
 
 ## Links, licence and credits
