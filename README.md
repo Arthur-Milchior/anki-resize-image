@@ -90,6 +90,6 @@ Based on    | Anki code by Damien Elmes <anki@ichi2.net>
 and on      | [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) by Simone Gaiarin
 Incorporating| jquery-ui (under MIT license)
 License     | GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
-Source in   | https://github.com/Arthur-Milchior/anki-
+Source in   | https://github.com/Arthur-Milchior/anki-resize-image
 Addon number| [1103084694](https://ankiweb.net/shared/info/1103084694)
 Support me on| [![Ko-fi](https://ko-fi.com/img/Kofi_Logo_Blue.svg)](Ko-fi.com/arthurmilchior) or [![Patreon](http://www.milchior.fr/patreon.png)](https://www.patreon.com/bePatron?u=146206)
