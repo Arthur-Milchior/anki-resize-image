@@ -14,9 +14,7 @@ May be I am just wrong on a financiary level and should copy Glutanimate's [Patr
 
 ### Other ways to resize image
 * The add-on
-[ImageResizer](https://ankiweb.net/shared/info/1214357311) partially
-resize the image, but only once, when the image is added. So you
-should now in advance which size you want.
+[ImageResizer](https://ankiweb.net/shared/info/1214357311) partially resize the image, but only once, when the image is added. So you should now in advance which size you want.
 * The add-on [Image style editor](https://ankiweb.net/shared/info/1593969147) allows to resize any image by entering the wanted height and width. That does the job, but it's not as intuitive as a click and drag.
 * The add-on [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) resize images, but in the editor only, to ensure it does not takes too much room. That's a really cool idea, but not what people where looking for.
 
@@ -25,37 +23,21 @@ The add-on have been tested and seems to work with every users now. I should how
 
 ## Configuration
 ### Ratio
-By default, resizing preserve ratio. I assume that's the usual way to
-resize image and that it is what user want. If you want to be able to
-resize without preserving ratio, you need to switch "preserve ratio
-while resizing" to false. You can always resize and preserve ratio by
-pressing shift while resizing. 
+By default, resizing preserve ratio. I assume that's the usual way to resize image and that it is what user want. If you want to be able to resize without preserving ratio, you need to switch "preserve ratio while resizing" to false. You can always resize and preserve ratio by pressing shift while resizing. 
 
-You can also set this value to "original". In this case, the image
-will always have the original ratio. The main advantage being that
-this ratio will be preserved even if you add maximum height or width.
+You can also set this value to "original". In this case, the image will always have the original ratio. The main advantage being that this ratio will be preserved even if you add maximum height or width.
 
 ### Maximum height or width
-You can tell the add-on to limit the height and/or width in the
-editor. This way, big images does not actually takes a lot of
-place. If you do so, you'll need to click on images before being able
-to resize them. You'll then need to click again if you want the
-maximums to be applied.
+You can tell the add-on to limit the height and/or width in the editor. This way, big images does not actually takes a lot of place. If you do so, you'll need to click on images before being able to resize them. You'll then need to click again if you want the maximums to be applied.
 
-Note that the ratio won't be preserved, unless you did set "preserve
-ratio while resizing" to "original".
+Note that the ratio won't be preserved, unless you did set "preserve ratio while resizing" to "original".
 
 ### Minimal height and width
-By default, an image will never be less than 10 px in height and
-width. This ensure that you can always resize the image. Otherwise,
-you could reduce height/width by accident to 0 px and then have the
-image disappear. You could change this value if you need to have
-smaller images; but I believe it'll be rare.
+By default, an image will never be less than 10 px in height and width. This ensure that you can always resize the image. Otherwise, you could reduce height/width by accident to 0 px and then have the image disappear. You could change this value if you need to have smaller images; but I believe it'll be rare.
 
 
 ## Internal
-This add-on replace the method `Editor.setupWeb`. The new method calls
-the previous method.
+This add-on replace the method `Editor.setupWeb`. The new method calls the previous method.
 
 ## TODO
 ### Resizing in reviewer
@@ -68,9 +50,7 @@ I can not yet add the list of supporter on kickstarter. Because kickstarter does
 Currently, when max-heigh/width is applied to an image which have been resized, the new size is not proportional to the old one. I don't see any easy way to correct it. May be try to figure it one day.
 
 ### Frozen fields
-While this add-on is mostly compatible with frozen fields, once you
-freeze/unfreeze a field, images are not resizable anymore. I submitted
-a correction to Frozen Field add-on. You can beta test it (https://github.com/glutanimate/frozen-fields/releases/tag/v2.1.0)[here]. Please tell us (here)[https://github.com/glutanimate/frozen-fields/pull/15#event-3054473127] whether it did work correctly; in which case the add-on will be updated on ankiweb.
+While this add-on is mostly compatible with frozen fields, once you freeze/unfreeze a field, images are not resizable anymore. I submitted a correction to Frozen Field add-on. You can beta test it (https://github.com/glutanimate/frozen-fields/releases/tag/v2.1.0)[here]. Please tell us (here)[https://github.com/glutanimate/frozen-fields/pull/15#event-3054473127] whether it did work correctly; in which case the add-on will be updated on ankiweb.
 
 ### Hook
 Once 2.1.21 is publicly available (not in beta) I should use new's hook to add the javascript to the editor with the hook instead of changing the method setupWeb.
