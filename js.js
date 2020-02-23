@@ -40,7 +40,11 @@ function $maybe_remove_a_dimension($img){
     }
 }
 
-function $resizeImage($img){
+async function $resizeImage($img){
+    var img = $img[0];
+    while (img.naturalWidth == 0 || img.naturalHeight == 0) {
+        await new Promise(r => setTimeout(r, 1000));
+    }
     var preserve_ratio_in_resizable = false;
     if (preserve_ratio == "current" || preserve_ratio == "original"){
         preserve_ratio_in_resizable = true;
