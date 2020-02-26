@@ -136,10 +136,7 @@ function $resizeImagesInField($field){
     $imgs.each(resizeImage);
     $imgs.css("display", "");
     $imgs.css("max-width", "100%");
-}
-
-function resizeImagesInField(idx, field){
-    return $resizeImagesInField($(field));
+    $imgs.css("max-height", "100%");
 }
 
 function saveField(type) {
@@ -165,22 +162,23 @@ insertHtmlRemovingInitialBR = function(html) {
             currentField.innerHTML = "";
         }
         setFormat("inserthtml", html);
-        setTimeout(
-            function(){
-                resizeImagesInField(null, currentField) 
-            },
-            2000);
+        add_on_to_field(null, currentField);
     }
 };
 
 setFieldsInit = setFields;    
 setFields = function(fields) {
     setFieldsInit(fields);
-    $fields = $("#fields");
+    $fields = $("#fields").find(".field");
+    $fields.each(add_on_to_field);
+}
+
+function add_on_to_field(idx, field){
+    $field = $(field)
     if (max_height || max_width) {
-        $imgs = $fields.find(".field").find("img");
+        $imgs = $field.find("img");
         $imgs.click(onClickOrDoubleClick);
     } else {
-        $fields.ready(function(){$fields.find(".field").each(resizeImagesInField);});
+        $resizeImagesInField($field);
     }
 };
