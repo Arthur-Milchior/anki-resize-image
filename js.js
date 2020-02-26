@@ -51,8 +51,12 @@ async function $resizeImage($img){
     }
     if ($img.resizable("instance") == undefined ) {
         $maybe_remove_a_dimension($img);
+        minHeight = ((min_height == null) ? 0: min_height)
+        minWidth = ((min_width == null) ? 0: min_width)
         $img.resizable({
-            aspectRatio: preserve_ratio_in_resizable
+            aspectRatio: preserve_ratio_in_resizable,
+            minHeight: minHeight,
+            minWidth: minWidth
         });
         $img.css("max-width", "100%");
         $divUi = $img.parents("div[class^=ui-]");

@@ -1,11 +1,11 @@
 {
-  "max-height": "200px",
+  "max-height": 200,
   "apply maximum height when not resizing": false,
-  "max-width": "200px",
+  "max-width": 200,
   "apply maximum width when not resizing": false,
-  "min-height": "10px",
+  "min-height": 10,
   "apply minimum height when not resizing": true,
-  "min-width": "10px",
+  "min-width": 10,
   "apply minimum width when not resizing": true,
   "preserve ratio while resizing": "current",
   "resizable-style": "border:1px dashed black;"
