@@ -181,6 +181,7 @@ function add_on_to_field(idx, field){
     $field = $(field)
     if (max_height || max_width) {
         $imgs = $field.find("img");
+        $imgs.off("click");
         $imgs.click(onClickOrDoubleClick);
     } else {
         $resizeImagesInField($field);
