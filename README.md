@@ -18,6 +18,10 @@ May be I am just wrong on a financiary level and should copy Glutanimate's [Patr
 * The add-on [Image style editor](https://ankiweb.net/shared/info/1593969147) allows to resize any image by entering the wanted height and width. That does the job, but it's not as intuitive as a click and drag.
 * The add-on [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) resize images, but in the editor only, to ensure it does not takes too much room. That's a really cool idea, but not what people where looking for.
 
+## Incompatible add-on
+Currently, this add-on is not compatible with "multi-column note
+editor". No other uncompatiblities are currently known.
+
 ## Warning
 The add-on have been tested and seems to work with every users now. I should however note that if you yourself are used to manipulate the html of your fields, unexpected results may occur. For example if for some reason you did add classes, max-height, max-width... to some of your images.
 
