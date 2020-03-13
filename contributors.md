@@ -1,4 +1,6 @@
 This add-on has been funded thanks to the contribution of:
-* **aPacy**
+* **aPaci**
+* **Jamie Koi**
 * Lyra_Purple 💜
 * Francisco Campos Coroa
+* Ryuziku
