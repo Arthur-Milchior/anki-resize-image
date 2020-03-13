@@ -17,7 +17,7 @@ function $partialCleanResize($img){
 function $cleanResize($field){
     // clean everything related to resize, so that it can be saved and
     // displayed properly in reviewer
-    $divUi = $field.find("div[class^=ui-]");
+    var $divUi = $field.find("div[class^=ui-]");
     $divUi.replaceWith(
         function() {
             return $(this).contents();
@@ -51,15 +51,15 @@ async function $resizeImage($img){
     }
     if ($img.resizable("instance") == undefined ) {
         $maybe_remove_a_dimension($img);
-        minHeight = ((min_height == null) ? 0: min_height)
-        minWidth = ((min_width == null) ? 0: min_width)
+        var minHeight = ((min_height == null) ? 0: min_height)
+        var minWidth = ((min_width == null) ? 0: min_width)
         $img.resizable({
             aspectRatio: preserve_ratio_in_resizable,
             minHeight: minHeight,
             minWidth: minWidth
         });
         $img.css("max-width", "100%");
-        $divUi = $img.parents("div[class^=ui-]");
+        var $divUi = $img.parents("div[class^=ui-]");
         $divUi.attr("contentEditable", "false");
         $divUi.css("display", "inline-block");
     } else {
@@ -86,7 +86,7 @@ function dblClickImage(img){
 }
 //end of code from https://codepen.io/chriscoyier/pen/HfBtz
 function onClickOrDoubleClick() {
-    img = this;
+    var img = this;
     if (waiting){
         dblClickImage(img);
     }
@@ -97,7 +97,7 @@ function onClickOrDoubleClick() {
 }
 
 function _onClick(img){
-    $img = $(img);
+    var $img = $(img);
     if ($img.data("resizable") != true){
         $img.data("resizable", true);
         $normalImageSize($img);
@@ -116,7 +116,7 @@ function $normalImageSize($img){
 }
 
 function onResize(event, ui){
-    $img = ui.element.find("img");
+    var $img = ui.element.find("img");
     $normalImageSize($img)
 }
 
@@ -124,10 +124,10 @@ function resizeImage(idx, img){
     $resizeImage($(img));
 }
 function _dblClickImage(img){
-    $img = $(img);
+    var $img = $(img);
     $img.css("width", "");
     $img.css("height", "");
-    $parents = $img.parents("div[class^=ui-]");
+    var $parents = $img.parents("div[class^=ui-]");
     $parents.css("width", "");
     $parents.css("height", "");
 }
@@ -135,7 +135,7 @@ function _dblClickImageUnconditional(){
     _dblClickImage(this);
 }
 function $resizeImagesInField($field){
-    $imgs = $field.find("img");
+    var $imgs = $field.find("img");
     $imgs.dblclick(_dblClickImageUnconditional);
     $imgs.each(resizeImage);
     $imgs.css("display", "");
@@ -170,17 +170,17 @@ insertHtmlRemovingInitialBR = function(html) {
     }
 };
 
-setFieldsInit = setFields;    
+var setFieldsInit = setFields;    
 setFields = function(fields) {
     setFieldsInit(fields);
-    $fields = $("#fields").find(".field");
+    var $fields = $("#fields").find(".field");
     $fields.each(add_on_to_field);
 }
 
 function add_on_to_field(idx, field){
-    $field = $(field)
+    var $field = $(field)
     if (max_height || max_width) {
-        $imgs = $field.find("img");
+        var $imgs = $field.find("img");
         $imgs.off("click");
         $imgs.click(onClickOrDoubleClick);
     } else {
