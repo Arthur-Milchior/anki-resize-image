@@ -18,12 +18,12 @@ def setBrowserResizeImage(self):
     style = getUserOption("resizable-style", "border:1px dashed black;")
     if style:
         add_style_in_web(self, f".ui-wrapper {{   {style} }}")
-    for m, default in [
-            ("min", "10px"),
-            ("max", "200px")
+    for m, default, suffix in [
+            ("min", "10px", ""),
+            ("max", "200px", " when not resizing")
     ]:
         for direction in ["width", "height"]:
-            if getUserOption(f"apply {m}imum {direction} when not resizing", False):
+            if getUserOption(f"apply {m}imum {direction}{suffix}", False):
                 limit = getUserOption(f"{m}-{direction}", default)
                 add_style_in_web(
                     self, f""".field img {{{m}-{direction}: {limit} }}""")

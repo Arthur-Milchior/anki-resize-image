@@ -2,6 +2,6 @@
 *max-height/max-width: which limit to apply to image (only if previous value is set to true). Either a number, in which case it represents pixel, or any a string with any valid css value. px, %.. see https://www.w3schools.com/cssref/css_units.asp
 * Apply minimum height/width: true or false. This ensure that you don't resize your image to 0 px and then lost it. Set it to false if you have some reason to want really small images.
 * min-height/min-width: which limit to apply to image (only if previous value is set to true). It should be an integer value in pixel.
-* preserve ratio: It value can be: "current" (preserve the current ration. If image was resized, it will keep the new ratio), "original" (if image was resized, it'll take back original ratio). With any other value it'll resize freely.
+* preserve ratio while resizing: It value can be: "current" (preserve the current ration. If image was resized, it will keep the new ratio), "original" (if image was resized, it'll take back original ratio). With any other value it'll resize freely.
 * resizable style: css style to apply to resizable elements. This allow users to see the border for images without border. It allows to see whether an image is resizable.
 * image-classes: a list of clasess (as string) to apply to images

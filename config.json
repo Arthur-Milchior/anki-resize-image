@@ -4,9 +4,9 @@
   "max-width": 200,
   "apply maximum width when not resizing": false,
   "min-height": 10,
-  "apply minimum height when not resizing": true,
+  "apply minimum height": true,
   "min-width": 10,
-  "apply minimum width when not resizing": true,
+  "apply minimum width": true,
   "preserve ratio while resizing": "current",
   "resizable-style": "border:1px dashed black;",
   "image-classes": []
