@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Resize image in editor",
+  "properties": {
+    "apply maximum height when not resizing": {
+      "type": "boolean",
+      "description": "Whether to make the height of image in the editor less than \"max-height\". If it's the case, you must then click on the image to be able to resize it.",
+      "default": false
+    },
+    "apply maximum width when not resizing": {
+      "type": "boolean",
+      "description": "Whether to make the width of image in the editor less than \"max-height\". If it's the case, you must then click on the image to be able to resize it.",
+      "default": false
+    },
+    "apply minimum height": {
+      "type": "boolean",
+      "description": "Whether to ensure that the image never get smaller than \"min-height\".",
+      "default": true
+    },
+    "apply minimum width": {
+      "type": "boolean",
+      "description": "Whether to ensure that the image never get smaller than \"min-width\".",
+      "default": true
+    },
+    "max-height": {
+      "type": "integer",
+      "description": "The maximum height of image by default, if \"apply maximum height when not resizing\" is checked.",
+      "default": 200
+    },
+    "max-width": {
+      "type": "integer",
+      "description": "The maximum width of image by default, if \"apply maximum width when not resizing\" is checked.",
+      "default": 200
+    },
+    "min-height": {
+      "type": "integer",
+      "description": "The minimal height of image, if \"apply minimal height when not resizing\" is checked.",
+      "default": 10
+    },
+    "min-width": {
+      "type": "integer",
+      "description": "The minimal width of image, if \"apply minimal width when not resizing\" is checked.",
+      "default": 10
+    },
+    "preserve ratio while resizing": {
+      "type": "string",
+      "default": "current",
+      "description": "It value can be: \"current\" (preserve the current ration. If image was resized, it will keep the new ratio), \"original\" (if image was resized, it'll take back original ratio). With any other value it'll resize freely.",
+      "enum": ["current", "original", "freely"]
+    },
+    "resizable-style": {
+      "type": "string",
+      "default": "border:1px dashed black;",
+      "description": "css style to apply to resizable elements. This allow users to see the border for images without border. It allows to see whether an image is resizable."
+    },
+    "image-classes": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of clasess (as string) to apply to images"
+    }
+  }
+}
