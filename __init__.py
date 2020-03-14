@@ -28,6 +28,9 @@ def setBrowserResizeImage(self):
                 add_style_in_web(
                     self, f""".field img {{{m}-{direction}: {limit} }}""")
                 self.web.eval(f"""{m}_{direction} = "{limit}";""")
+    image_classes = getUserOption("image-classes", {});
+    image_classes = json.dumps(image_classes)
+    self.web.eval(f"""image_classes = {image_classes};""")
     self.web.eval(
         f"""preserve_ratio={json.dumps(getUserOption("preserve ratio while resizing", "current"))}""")
 

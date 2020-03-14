@@ -8,5 +8,6 @@
   "min-width": 10,
   "apply minimum width when not resizing": true,
   "preserve ratio while resizing": "current",
-  "resizable-style": "border:1px dashed black;"
+  "resizable-style": "border:1px dashed black;",
+  "image-classes": []
 }
