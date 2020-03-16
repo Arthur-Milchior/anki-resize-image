@@ -19,14 +19,14 @@ def setBrowserResizeImage(self):
     if style:
         add_style_in_web(self, f".ui-wrapper {{   {style} }}")
     for m, default, suffix in [
-            ("min", "10px", ""),
-            ("max", "200px", " when not resizing")
+            ("min", 10, ""),
+            ("max", 200, " when not resizing")
     ]:
         for direction in ["width", "height"]:
             if getUserOption(f"apply {m}imum {direction}{suffix}", False):
                 limit = getUserOption(f"{m}-{direction}", default)
                 add_style_in_web(
-                    self, f""".field img {{{m}-{direction}: {limit} }}""")
+                    self, f""".field img {{{m}-{direction}: {limit}px}}""")
                 self.web.eval(f"""{m}_{direction} = "{limit}";""")
     image_classes = getUserOption("image-classes", {});
     image_classes = json.dumps(image_classes)
