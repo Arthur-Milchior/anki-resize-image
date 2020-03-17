@@ -64,6 +64,7 @@ This add-on has been crowdfunden on (Kickstarter)[https://www.kickstarter.com/pr
 * The AnKing
 * Pravin Manju Vence
 * and other (contributors)[contributors.md] 
+* Joseph
 
 ## Links, licence and credits
 
