@@ -1,9 +1,3 @@
-var max_height = null;
-var min_height = null;
-var max_width = null;
-var min_width = null;
-var image_classes = null;
-
 function partialCleanResize(idx, img){
     $partialCleanResize($(img));
 }
