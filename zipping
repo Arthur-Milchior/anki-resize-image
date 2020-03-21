@@ -1,1 +1,2 @@
-zip resize.zip *py *js *css  *json *md zipping
+rm resize.zip
+zip -R resize.zip web/* config.* *py  LICENSE *.md zipping --exclude \*~ \*zip ankiweb
