@@ -28,7 +28,7 @@ That does the job, but it's not as intuitive as a click and drag.
 That's a really cool idea, but not what people were looking for.
 
 ## Incompatible add-ons
-* [multi-column note editor](https://ankiweb.net/shared/info/3491767031)
+* [multi-column note editor](https://ankiweb.net/shared/info/3491767031) - I sent a correction to this code, and am waiting for update about it. It will eventually be compatible
 * [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) - its functionality has been incorporated into this add-on so there is no need to use both
 
 No other incompatiblities are currently known.
@@ -72,11 +72,6 @@ I'll make a pull request to the author of [Edit Field During Review (Cloze)](htt
 ### Max height/width
 Currently, when max-height/width is applied to an image which has been resized, the new size is not proportional to the old one.
 I don't see any easy way to correct it. Maybe try to figure it out one day.
-
-### Frozen fields
-While this add-on is mostly compatible with frozen fields, once you freeze/unfreeze a field, images are not resizable anymore.
-I submitted a correction to Frozen Field add-on. You can beta test it [here](https://github.com/glutanimate/frozen-fields/releases/tag/v2.1.0).
-Please tell us [here](https://github.com/glutanimate/frozen-fields/pull/15#event-3054473127) whether it worked correctly or not, in which case the add-on will be updated on ankiweb.
 
 ### Hook
 Once 2.1.21 is publicly available (not in beta) I should use new's hook to add the javascript to the editor with the hook instead of changing the method setupWeb.
