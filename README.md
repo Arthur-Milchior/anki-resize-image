@@ -11,7 +11,7 @@ I had to implement its feature in my add-on since both add-ons cannot be used si
 ### Development of this add-on
 This feature was [voted](https://www.reddit.com/r/Anki/comments/ex8h23/unofficial_feature_voting_system_february_2020/) the most wanted feature by Anki's subreddit community.
 I currently don't have a job and would have liked to figure out how to make a little bit of money from the (tens of?) thousands of users my add-ons have.
-I also don't want to limit the access to only people who paid for mt add-ons; once I have the money, I expected that every user, with or without money, could have access to them.
+I also don't want to limit the access to only people who paid for my add-ons; once I have the money, I expected that every user, with or without money, could have access to them.
 I explained on [my blog](http://www.milchior.fr/blog_en/index.php/post/2020/02/17/How-hard-can-it-be-to-code-a-feature-to-let-users-resize-images-in-a-software) why it was actually complex to create.
 
 Maybe I am just wrong on a financiary level and should copy Glutanimate's [Patreon](https://www.patreon.com/glutanimate).
