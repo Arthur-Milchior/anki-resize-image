@@ -36,9 +36,9 @@ def getUserOption(key=None, default=None):
     """Get the user option if it is set. Otherwise return the default
     value and add it to the config.
 
-    When an add-on was updated, new config key were not added. This
-    was a problem because user never discover those configs. By adding
-    it to the config file, users will see the option and can configure it.
+    When an add-on was updated, new config key was not added. This
+    was a problem because users never discovered those configs. By adding
+    it to the config file, users will see the option and could configure it.
 
     """
     _getUserOption()

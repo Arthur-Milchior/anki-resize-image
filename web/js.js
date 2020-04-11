@@ -11,7 +11,7 @@ function $partialCleanResize($img){
 
 function $cleanResize($field){
     // clean everything related to resize, so that it can be saved and
-    // displayed properly in reviewer
+    // displayed properly in the reviewer
     var $divUi = $field.find("div[class^=ui-]");
     $divUi.replaceWith(
         function() {

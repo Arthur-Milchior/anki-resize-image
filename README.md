@@ -5,13 +5,13 @@ editor. This add-on adds that exact feature.
 
 ### Size limit
 It seems a lot of users want to still be able to use the [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) add-on.
-These add-ons cannot be used simultaneously, so I had to implement its feature in my add-on. 
+I had to implement its feature in my add-on since both add-ons cannot be used simultaneously.
 
 ## History
 ### Development of this add-on
 This feature was [voted](https://www.reddit.com/r/Anki/comments/ex8h23/unofficial_feature_voting_system_february_2020/) the most wanted feature by Anki's subreddit community.
 I currently don't have a job and would have liked to figure out how to make a little bit of money from the (tens of?) thousands of users my add-ons have.
-I also don't want to limit the access to people who paid; once I have the money, I expected that every user, with or without money, could have access to it.
+I also don't want to limit the access to only people who paid for mt add-ons; once I have the money, I expected that every user, with or without money, could have access to them.
 I explained on [my blog](http://www.milchior.fr/blog_en/index.php/post/2020/02/17/How-hard-can-it-be-to-code-a-feature-to-let-users-resize-images-in-a-software) why it was actually complex to create.
 
 Maybe I am just wrong on a financiary level and should copy Glutanimate's [Patreon](https://www.patreon.com/glutanimate).
@@ -28,21 +28,21 @@ That does the job, but it's not as intuitive as a click and drag.
 That's a really cool idea, but not what people were looking for.
 
 ## Incompatible add-ons
-* [multi-column note editor](https://ankiweb.net/shared/info/3491767031) - I sent a correction to this code, and am waiting for update about it. It will eventually be compatible
-* [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) - its functionality has been incorporated into this add-on so there is no need to use both
+* [multi-column note editor](https://ankiweb.net/shared/info/3491767031) - I sent a correction to this code, and am waiting for update about it. It will eventually be compatible.
+* [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) - its functionality has been incorporated into this add-on so there is no need to use both add-ons.
 
 No other incompatiblities are currently known.
 
 ## Warning
 The add-on has been tested and seems to work with all users now.
-I should however note that if you yourself are used to manipulating the html of your fields, unexpected results may occur.
+I should however note that if you are used to manipulating the html of your fields, unexpected results may occur.
 For example if for some reason you added classes, max-height, max-width... to some of your images.
 
 ## Configuration
 ### Ratio
 By default, resizing preserves the height:width ratio. I assume that's the usual way to resize an image and that is what the user wants.
-If you want to be able to resize without preserving ratio, you need to switch `preserve ratio while resizing` to `false`.
-You can always resize and preserve the ratio by pressing `Shift` while resizing. 
+If you want to be able to resize without preserving the aspect ratio, you need to switch `preserve ratio while resizing` to `false`.
+You can always resize and preserve the acpect ratio by pressing `Shift` while resizing. 
 
 You can also set this value to `original`. In this case, the image will always have the original ratio.
 The main advantage is that this ratio will be preserved even if you add a maximum height or width.
@@ -50,8 +50,8 @@ The main advantage is that this ratio will be preserved even if you add a maximu
 ### Maximum height or width
 You can tell the add-on to limit the height and/or width in the editor.
 This way, big images do not take up a lot of space.
-If you do so, you'll need to click on images before being able to resize them.
-You'll then need to click again if you want the maximums to be applied.
+If you do so, you'll need to click on the images before being able to resize them.
+You'll then need to click again if you want the maximum to be applied.
 
 Note that the ratio won't be preserved, unless you had set `preserve ratio while resizing` to `original`.
 
@@ -74,7 +74,7 @@ Currently, when max-height/width is applied to an image which has been resized, 
 I don't see any easy way to correct it. Maybe try to figure it out one day.
 
 ### Hook
-Once 2.1.21 is publicly available (not in beta) I should use new's hook to add the javascript to the editor with the hook instead of changing the method setupWeb.
+Once 2.1.21 is publicly available (not in beta) I should use a new hook to feed the javascript to the editor with the hook instead of changing the method setupWeb.
 
 ### Contribution
 This add-on has been crowdfunded on [Kickstarter](https://www.kickstarter.com/projects/arthurmilchior/image-resizing-in-anki). Thanks to:
