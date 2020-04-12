@@ -5,12 +5,12 @@
   "properties": {
     "apply maximum height when not resizing": {
       "type": "boolean",
-      "description": "Whether to make the height of image in the editor less than \"max-height\". If it's the case, you must then click on the image to be able to resize it.",
+      "description": "Whether to make the height of image in the editor less than \"max-height\". If that's the case, you must then click on the image to be able to resize it.",
       "default": false
     },
     "apply maximum width when not resizing": {
       "type": "boolean",
-      "description": "Whether to make the width of image in the editor less than \"max-height\". If it's the case, you must then click on the image to be able to resize it.",
+      "description": "Whether to make the width of image in the editor less than \"max-height\". If that's the case, you must then click on the image to be able to resize it.",
       "default": false
     },
     "apply minimum height": {
@@ -46,13 +46,13 @@
     "preserve ratio while resizing": {
       "type": "string",
       "default": "current",
-      "description": "It value can be: \"current\" (preserve the current ration. If image was resized, it will keep the new ratio), \"original\" (if image was resized, it'll take back original ratio). With any other value it'll resize freely.",
+      "description": "Its value can be: \"current\" (preserve the current ration. If image was resized, it will keep the new ratio), \"original\" (if image was resized, it'll take back its original ratio). With any other value it'll resize freely.",
       "enum": ["current", "original", "freely"]
     },
     "resizable-style": {
       "type": "string",
       "default": "border:1px dashed black;",
-      "description": "css style to apply to resizable elements. This allow users to see the border for images without border. It allows to see whether an image is resizable."
+      "description": "css style to apply to resizable elements. This allow users to see the border for images without border. It allows to see whether an image is resizable or not."
     },
     "image-classes": {
       "type": "array",
@@ -60,7 +60,7 @@
       "items": {
         "type": "string"
       },
-      "description": "A list of clasess (as string) to apply to images"
+      "description": "A list of clasess (as string) to apply to images."
     }
   }
 }
