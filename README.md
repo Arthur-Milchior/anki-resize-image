@@ -32,7 +32,6 @@ That does the job, but it's not as intuitive as a click and drag.
 That's a really cool idea, but not what people were looking for.
 
 ## Incompatible add-ons
-* [multi-column note editor](https://ankiweb.net/shared/info/3491767031) - I sent a correction to this code, and am waiting for update about it. It will eventually be compatible.
 * [maximum image height in card editor](https://ankiweb.net/shared/info/229181581) - its functionality has been incorporated into this add-on so there is no need to use both add-ons.
 
 No other incompatiblities are currently known.
