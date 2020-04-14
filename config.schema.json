@@ -61,6 +61,11 @@
         "type": "string"
       },
       "description": "A list of clasess (as string) to apply to images."
+    },
+    "note-type style": {
+      "type": ["string", "null"],
+      "description": "some style to add to each note type with an image edited. Default value ensure that images are not resized on mobile.",
+      "default":".mobile .card img {height:unset  !important;}",      
     }
   }
 }

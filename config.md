@@ -5,3 +5,4 @@
 * preserve ratio while resizing: It value can be: "current" (preserve the current ration. If image was resized, it will keep the new ratio), "original" (if image was resized, it'll take back original ratio). With any other value it'll resize freely.
 * resizable style: css style to apply to resizable elements. This allow users to see the border for images without border. It allows to see whether an image is resizable or not.
 * image-classes: a list of clasess (as string) to apply to images.
+* note-type style: some style to add to each note type opened when the add-on is active. Default value ensures that images are not resized on mobile. The null value means that no change is made to the note type style.

@@ -17,6 +17,10 @@ I explained on [my blog](http://www.milchior.fr/blog_en/index.php/post/2020/02/1
 Maybe I am just wrong on a financiary level and should copy Glutanimate's [Patreon](https://www.patreon.com/glutanimate).
 He seems to have far more success than me while some of his very useful add-ons are only accessible to paid users.
 
+### Compatibility with mobile
+
+In order to be compatible with mobile, the default decision is to ignore image size on mobile. This is done thanks to the default value of the configuration "note-type style". If you know some CSS, feel free to change it if you need it. Default value should work for most people.
+
 ### Other ways to resize an image
 * The add-on [ImageResizer](https://ankiweb.net/shared/info/1214357311) resizes images but only when a new image is added.
 So you must know in advance which size you want.
@@ -94,4 +98,5 @@ Incorporating| jquery-ui (under MIT license)
 License     | GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html
 Source in   | https://github.com/Arthur-Milchior/anki-resize-image
 Addon number| [1103084694](https://ankiweb.net/shared/info/1103084694)
+Default css by | [AlienFever](https://github.com/Arthur-Milchior/anki-resize-image/issues/16#issuecomment-613541753)
 Support me on| [![Ko-fi](https://ko-fi.com/img/Kofi_Logo_Blue.svg)](Ko-fi.com/arthurmilchior) or [![Patreon](http://www.milchior.fr/patreon.png)](https://www.patreon.com/bePatron?u=146206)
