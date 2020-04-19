@@ -64,11 +64,9 @@ def add_style_to_note(editor):
         model["css"] = css
         mw.col.models.save(model, updateReqs=False)
     if m is None:
-        print(f"does not match between «{find_query}» and «{css}»")
         css += "\n" + correct_style_part
         save_css()
     elif m.group("style") != style :
-        print(f"""distinct:\nfound«{m.group("style")}»\nexpected «{style}»""")
         css = re.sub(find_query, correct_style_part, css, flags=re.S|re.M)
         save_css()
 
