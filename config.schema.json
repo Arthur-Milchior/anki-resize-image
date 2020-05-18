@@ -66,6 +66,11 @@
       "type": ["string", "null"],
       "description": "some style to add to each note type with an image edited. Default value ensure that images are not resized on mobile.",
       "default":".mobile .card img {height:unset  !important;}"
+    },
+    "draggable border width": {
+      "type": "integer",
+      "description": "The width of the area on the image border that allows you to resize the image.",
+      "default": 5
     }
   }
 }

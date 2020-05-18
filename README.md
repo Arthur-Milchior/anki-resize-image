@@ -64,6 +64,9 @@ This ensures that you can always resize the image.
 Otherwise, you could reduce height/width by accident to 0 px and then have the image disappear.
 You could change this value if you need to have smaller images, but I believe it'll be rare.
 
+### draggable border width
+`draggable border width` sets the width of the area on the image border that allows you to resize the image.
+
 ## Internal
 This add-on replaces the method `Editor.setupWeb`. The new method calls the previous method.
 
