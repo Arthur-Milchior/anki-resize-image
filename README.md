@@ -98,4 +98,3 @@ License     | GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.htm
 Source in   | https://github.com/Arthur-Milchior/anki-resize-image
 Addon number| [1103084694](https://ankiweb.net/shared/info/1103084694)
 Default css by | [AlienFever](https://github.com/Arthur-Milchior/anki-resize-image/issues/16#issuecomment-613541753)
-Support me on| [![Ko-fi](https://ko-fi.com/img/Kofi_Logo_Blue.svg)](Ko-fi.com/arthurmilchior) or [![Patreon](http://www.milchior.fr/patreon.png)](https://www.patreon.com/bePatron?u=146206)
