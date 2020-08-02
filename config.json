@@ -10,5 +10,6 @@
   "preserve ratio while resizing": "current",
   "resizable-style": "border:1px dashed black;",
   "image-classes": [],
-  "note-type style": ".mobile .card img {height:unset  !important; width:unset  !important;}"
+  "note-type style": ".mobile .card img {height:unset  !important; width:unset  !important;}",
+  "draggable border width": 15
 }

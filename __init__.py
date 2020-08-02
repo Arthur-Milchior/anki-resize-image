@@ -22,6 +22,18 @@ def setBrowserResizeImage(web_content, context):
     js = []
     if style:
         css.append(f".ui-wrapper {{   {style} }}\n")
+    borderwidth = getUserOption("draggable border width", 15)
+    css.append(f"""
+.ui-resizable-s {{
+    height: {borderwidth}px;
+}}
+.ui-resizable-e {{
+    width: {borderwidth}px;; 
+}}
+.ui-resizable-se {{
+    width: {borderwidth}px;
+    height: {borderwidth}px; 
+}}""")
     for m, default, suffix in [
             ("min", 10, ""),
             ("max", 200, " when not resizing")
