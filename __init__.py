@@ -60,7 +60,7 @@ gui_hooks.webview_will_set_content.append(setBrowserResizeImage)
 
 def add_style_to_note(editor):
     style = getUserOption("note-type style", None)
-    if style is None:
+    if not style:
         return
     model = editor.note.model()
     css = model["css"]
