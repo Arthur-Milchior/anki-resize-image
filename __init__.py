@@ -15,7 +15,7 @@ def setBrowserResizeImage(web_content, context):
     addon_package = mw.addonManager.addonFromModule(__name__)
     web_content.css.append(f"/_addons/{addon_package}/web/jquery-ui.css")
     web_content.js.append(f"/_addons/{addon_package}/web/js.js")
-    web_content.js.append(f"jquery-ui.js")
+    web_content.js.append(f"js/vendor/jquery-ui.js")
 
     style = getUserOption("resizable-style", "border:1px dashed black;")
     css = []
