@@ -134,8 +134,8 @@ function _dblClickImage(img){
 function _dblClickImageUnconditional(){
     _dblClickImage(this);
 }
-function $resizeImagesInField($field){
-    var $imgs = $field.find("img");
+function $resizeImagesInField($editable){
+    var $imgs = $editable.find("img");
     $imgs.dblclick(_dblClickImageUnconditional);
     $imgs.each(resizeImage);
     $imgs.css("display", "");
@@ -173,17 +173,29 @@ insertHtmlRemovingInitialBR = function(html) {
 var setFieldsInit = setFields;    
 setFields = function(fields) {
     setFieldsInit(fields);
-    var $fields = $("#fields").find(".field");
-    $fields.each(add_on_to_field);
+    const fieldsContainer = document.getElementById("fields");
+    for (let i = 0; i < fieldsContainer.childElementCount; i++) {
+        add_on_to_field(fieldsContainer.children[i]);
+    }
 }
 
-function add_on_to_field(idx, field){
-    var $field = $(field)
+function add_on_to_field(editorField){
+    const editingArea = editorField.editingArea;
+    const editable = editingArea.editable;
+    const $editable = $(editable);
+
+    const shadowRoot = editingArea.shadowRoot;
+    const shadowStyle = document.createElement("link");
+    shadowStyle.setAttribute("rel", "stylesheet");
+    shadowStyle.setAttribute("href", jquery_ui_path);
+    shadowRoot.appendChild(shadowStyle);
+
+
     if (max_height || max_width) {
-        var $imgs = $field.find("img");
+        var $imgs = $editable.find("img");
         $imgs.off("click");
         $imgs.click(onClickOrDoubleClick);
     } else {
-        $resizeImagesInField($field);
+        $resizeImagesInField($editable);
     }
 };

@@ -5,13 +5,15 @@ from aqt.editor import Editor
 
 
 from .config import getUserOption
-import .add_style
+from . import add_style
+
+from aqt.webview import AnkiWebView
 
 def setBrowserResizeImage(web_content, context):
     if not isinstance(context, Editor):
         return
     addon_package = mw.addonManager.addonFromModule(__name__)
-    web_content.css.append(f"/_addons/{addon_package}/web/jquery-ui.css")
+    jquery_ui_path = AnkiWebView.webBundlePath(f"/_addons/{addon_package}/web/jquery-ui.css")
     web_content.js.append(f"/_addons/{addon_package}/web/js.js")
     web_content.js.append(f"js/vendor/jquery-ui.min.js")
 
@@ -20,6 +22,7 @@ def setBrowserResizeImage(web_content, context):
     js = []
     if style:
         css.append(f".ui-wrapper {{   {style} }}\n")
+    js.append(f"""const jquery_ui_path = "{jquery_ui_path}";""")
     borderwidth = getUserOption("draggable border width", 15)
     css.append(f"""
 .ui-resizable-s {{
