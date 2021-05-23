@@ -40,14 +40,14 @@ def setBrowserResizeImage(web_content, context):
             if getUserOption(f"apply {m}imum {direction}{suffix}", False):
                 limit = getUserOption(f"{m}-{direction}", default)
                 css.append(f""".field img {{{m}-{direction}: {limit}px}}""")
-                js.append(f"""{m}_{direction} = "{limit}";""")
+                js.append(f"""const {m}_{direction} = "{limit}";""")
             else:
-                js.append(f"""{m}_{direction} = null;""")
+                js.append(f"""const {m}_{direction} = null;""")
     image_classes = getUserOption("image-classes", {})
     image_classes = json.dumps(image_classes)
-    js.append(f"""image_classes = {image_classes};""")
+    js.append(f"""const image_classes = {image_classes};""")
     js.append(
-        f"""preserve_ratio={json.dumps(getUserOption("preserve ratio while resizing", "current"))}""")
+        f"""const preserve_ratio = {json.dumps(getUserOption("preserve ratio while resizing", "current"))}""")
     web_content.head += (f"""
 <style>""" + "\n".join(css) + """</style>
 <script>""" + "\n".join(js) + """</script>""")
