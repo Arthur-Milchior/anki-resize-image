@@ -1,13 +1,11 @@
 import json
 
-from anki.hooks import wrap
-from anki.lang import _
 from aqt import gui_hooks, mw
 from aqt.editor import Editor
-import re
+
 
 from .config import getUserOption
-
+import .add_style
 
 def setBrowserResizeImage(web_content, context):
     if not isinstance(context, Editor):
@@ -58,28 +56,3 @@ def setBrowserResizeImage(web_content, context):
 mw.addonManager.setWebExports(__name__, r"web/.*(css|js)")
 gui_hooks.webview_will_set_content.append(setBrowserResizeImage)
 
-def add_style_to_note(editor):
-    style = getUserOption("note-type style", None)
-    if not style:
-        return
-    model = editor.note.model()
-    css = model["css"]
-    prefix = """/*Start of style added by resize image add-on. Don't edit directly or the edition will be lost. Edit via the add-on configuration */"""
-    suffix = """/*End of style added by resize image add-on*/"""
-    slashed_star = r"\*"
-    find_query = f"""{prefix.replace("*", slashed_star)}\n(?P<style>.*?)\n{suffix.replace("*", slashed_star)}"""
-    correct_style_part = f"""{prefix}
-{style}
-{suffix}"""
-    m = re.search(find_query, css, flags=re.S|re.M)
-    def save_css():
-        model["css"] = css
-        mw.col.models.save(model, updateReqs=False)
-    if m is None:
-        css += "\n" + correct_style_part
-        save_css()
-    elif m.group("style") != style :
-        css = re.sub(find_query, correct_style_part, css, flags=re.S|re.M)
-        save_css()
-
-gui_hooks.editor_did_load_note.append(add_style_to_note)
