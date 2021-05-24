@@ -170,15 +170,6 @@ insertHtmlRemovingInitialBR = function(html) {
     }
 };
 
-var setFieldsInit = setFields;    
-setFields = function(fields) {
-    setFieldsInit(fields);
-    const fieldsContainer = document.getElementById("fields");
-    for (let i = 0; i < fieldsContainer.childElementCount; i++) {
-        add_on_to_field(fieldsContainer.children[i]);
-    }
-}
-
 function add_on_to_field(editorField){
     const editingArea = editorField.editingArea;
     const editable = editingArea.editable;
@@ -197,5 +188,12 @@ function add_on_to_field(editorField){
         $imgs.click(onClickOrDoubleClick);
     } else {
         $resizeImagesInField($editable);
+    }
+};
+
+function start_resize_addon() {
+    const fieldsContainer = document.getElementById("fields");
+    for (let i = 0; i < fieldsContainer.childElementCount; i++) {
+        add_on_to_field(fieldsContainer.children[i]);
     }
 };

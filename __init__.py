@@ -59,3 +59,9 @@ def setBrowserResizeImage(web_content, context):
 mw.addonManager.setWebExports(__name__, r"web/.*(css|js)")
 gui_hooks.webview_will_set_content.append(setBrowserResizeImage)
 
+
+def note_is_loaded(editor: Editor):
+    editor.web.eval("start_resize_addon()")
+
+gui_hooks.editor_did_load_note.append(note_is_loaded)
+
