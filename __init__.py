@@ -14,7 +14,11 @@ def setBrowserResizeImage(web_content, context):
         return
     addon_package = mw.addonManager.addonFromModule(__name__)
     jquery_ui_path = AnkiWebView.webBundlePath(f"/_addons/{addon_package}/web/jquery-ui.css")
-    web_content.js.append(f"/_addons/{addon_package}/web/js.js")
+    web_content.js.append(f"/_addons/{addon_package}/web/all_cases.js")
+    web_content.js.append(f"/_addons/{addon_package}/web/directly_resize.js")
+    web_content.js.append(f"/_addons/{addon_package}/web/default_max.js")
+    web_content.js.append(f"/_addons/{addon_package}/web/init.js")
+    web_content.js.append(f"/_addons/{addon_package}/web/save_field.js")
     web_content.js.append(f"js/vendor/jquery-ui.min.js")
 
     style = getUserOption("resizable-style", "border:1px dashed black;")
