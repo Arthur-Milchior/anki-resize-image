@@ -1,16 +1,18 @@
 /** 
 Methods used if all images should directly be resizable
 */
-function resizeImage(idx, img){
-    $resizeImage($(img));
+function resizeImage(idx, img){ //index of an image node in its field, the image node
+    $img = $(img); // jquery selection of an image node in a field
+    $resizeImage($img);
 }
 
 function _dblClickImageUnconditional(){
-    _dblClickImage(this);
+    img = this; // img of a field
+    _dblClickImage(img);
 }
 
-function $resizeImagesInField($editable){
-    var $imgs = $editable.find("img");
+function $resizeImagesInField($editable){ // jquery selection of editable.Editable(HTMLElement) of current field
+    var $imgs = $editable.find("img"); // jquery selection of images in the current field
     $imgs.dblclick(_dblClickImageUnconditional);
     $imgs.each(resizeImage);
     $imgs.css("display", "");

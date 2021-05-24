@@ -2,8 +2,8 @@
 Methods that are used in all cases.
 */
 
-function $maybe_remove_a_dimension($img){
-    if (preserve_ratio == "original"){
+function $maybe_remove_a_dimension($img) { // jquery selection of an image node in a field
+    if (preserve_ratio == "original") {
         if (max_width != null) {
             $img.css("height", "");
         } else {
@@ -12,20 +12,25 @@ function $maybe_remove_a_dimension($img){
     }
 }
 
-function $partialCleanResize($img){
+function $partialCleanResize($img) { // jquery selection of an image node in a field
     // Clean the style in the image. So that max height can be applied again correctly.
     $img.removeClass();
     ["position", "max-width", "max-height", "margin", "resize", "position", "zoom", "display", "top", "left"].forEach(style => {$img.css(style, "");});
     $maybe_remove_a_dimension($img);
 }
 
-async function $resizeImage($img){
-    var img = $img[0];
+function $get_image_parents($img) { // jquery selection of an image node in a field
+    return $img.parents("div[class^=ui-]");
+}
+
+async function $resizeImage($img) { // jquery selection of an image node in a field
+    var img = $img[0]; // image node in a field
     while (img.naturalWidth == 0 || img.naturalHeight == 0) {
+        // Wait until the image size is not 0.
         await new Promise(r => setTimeout(r, 1000));
     }
     var preserve_ratio_in_resizable = false;
-    if (preserve_ratio == "current" || preserve_ratio == "original"){
+    if (preserve_ratio == "current" || preserve_ratio == "original") {
         preserve_ratio_in_resizable = true;
     }
     if ($img.resizable("instance") == undefined ) {
@@ -38,7 +43,7 @@ async function $resizeImage($img){
             minWidth: minWidth
         });
         $img.css("max-width", "100%");
-        var $divUi = $img.parents("div[class^=ui-]");
+        var $divUi = $get_image_parents($img); // jquery of div node used by jquery-ui containing the image node.
         $divUi.attr("contentEditable", "false");
         $divUi.css("display", "inline-block");
     } else {
@@ -46,12 +51,12 @@ async function $resizeImage($img){
     }
 }
 
-function _dblClickImage(img){
-    var $img = $(img);
+function _dblClickImage(img) { // img node in a field
+    var $img = $(img); // jquery selection of an image node in a field
     $img.css("width", "");
     $img.css("height", "");
-    var $parents = $img.parents("div[class^=ui-]");
+
+    var $parents = $get_image_parents($img); // jquery of div node used by jquery-ui containing the image node.
     $parents.css("width", "");
     $parents.css("height", "");
 }
-

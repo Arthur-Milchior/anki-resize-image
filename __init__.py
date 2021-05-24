@@ -69,3 +69,27 @@ def note_is_loaded(editor: Editor):
 
 gui_hooks.editor_did_load_note.append(note_is_loaded)
 
+
+def receive_field_value(handled, cmd, editor):
+    if not isinstance(editor, Editor):
+        return handled
+    if not (cmd.startswith("blur") or cmd.startswith("key")):
+        return handled
+    (handled, callback_value) = handled
+    (type, ord_str, nid_str, txt) = cmd.split(":", 3)
+    editor.web.eval(f"""cleanResizeHtml("{type}", {ord_str}, {nid_str}, {json.dumps(txt)});""")
+    return (True, callback_value)
+
+gui_hooks.webview_did_receive_js_message.append(receive_field_value)
+
+def receive_corrected_value(handled, cmd, editor):
+    if not isinstance(editor, Editor):
+        return handled
+    if not cmd.startswith("without_resize"):
+        return handled
+    (handled, callback_value) = handled
+    (without_resize, cmd) = cmd.split(":", 1)
+    editor.onBridgeCmd(cmd)
+    return (True, callback_value)
+
+gui_hooks.webview_did_receive_js_message.append(receive_corrected_value)
