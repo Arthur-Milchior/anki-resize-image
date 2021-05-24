@@ -5,12 +5,17 @@ Methods used to initialize the add-on, for all configurations
 function add_on_to_field(editorField){ // editorField.EditorField(HTMLDivElement)
     const editingArea = editorField.editingArea; // editingArea.EditingArea(HTMLDivElement)
     const editable = editingArea.editable; // editable.Editable(HTMLElement)
+    const $editable = $(editable); // jquery selection of editable.Editable(HTMLElement) of current field
 
     const shadowRoot = editingArea.shadowRoot; // editingArea.EditingArea(HTMLDivElement)'s shadow root
-    const shadowStyle = document.createElement("link"); // Css link
-    shadowStyle.setAttribute("rel", "stylesheet");
-    shadowStyle.setAttribute("href", jquery_ui_path);
-    shadowRoot.appendChild(shadowStyle);
+    const shadowStyleLink = document.createElement("link"); // Css link
+    shadowStyleLink.setAttribute("rel", "stylesheet");
+    shadowStyleLink.setAttribute("href", jquery_ui_path);
+    shadowRoot.appendChild(shadowStyleLink);
+
+    const rootStyleCss = document.createElement("style");
+    rootStyleCss.innerHTML = css_editable;
+    shadowRoot.appendChild(rootStyleCss);
 
 
     if (max_height || max_width) {
@@ -18,7 +23,6 @@ function add_on_to_field(editorField){ // editorField.EditorField(HTMLDivElement
         $imgs.off("click");
         $imgs.click(onClickOrDoubleClick);
     } else {
-        const $editable = $(editable); // jquery selection of editable.Editable(HTMLElement) of current field
         $resizeImagesInField($editable);
     }
 };

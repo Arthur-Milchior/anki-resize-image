@@ -33,7 +33,7 @@ def setBrowserResizeImage(web_content, context):
     height: {borderwidth}px;
 }}
 .ui-resizable-e {{
-    width: {borderwidth}px;; 
+    width: {borderwidth}px;
 }}
 .ui-resizable-se {{
     width: {borderwidth}px;
@@ -46,17 +46,18 @@ def setBrowserResizeImage(web_content, context):
         for direction in ["width", "height"]:
             if getUserOption(f"apply {m}imum {direction}{suffix}", False):
                 limit = getUserOption(f"{m}-{direction}", default)
-                css.append(f""".field img {{{m}-{direction}: {limit}px}}""")
+                css.append(f"""img {{{m}-{direction}: {limit}px}}""")
                 js.append(f"""const {m}_{direction} = "{limit}";""")
             else:
                 js.append(f"""const {m}_{direction} = null;""")
     image_classes = getUserOption("image-classes", {})
     image_classes = json.dumps(image_classes)
     js.append(f"""const image_classes = {image_classes};""")
+    css = "\n".join(css)
+    js.append(f"""const css_editable = {json.dumps(css)}""")
     js.append(
         f"""const preserve_ratio = {json.dumps(getUserOption("preserve ratio while resizing", "current"))}""")
     web_content.head += (f"""
-<style>""" + "\n".join(css) + """</style>
 <script>""" + "\n".join(js) + """</script>""")
 
 
